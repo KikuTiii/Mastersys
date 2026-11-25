@@ -1,0 +1,56 @@
+@baseUrl = http://localhost:8080
+
+### Cadastrar Aluno
+POST {{baseUrl}}/alunos
+Content-Type: application/json
+
+{
+  "nome": "Matheus kikuti",
+  "dataNascimento": "2004-05-16",
+  "sexo": "M",
+  "telefone": "123456789",
+  "celular": "123456789",
+  "email": "matheus@gmail.com",
+  "observacao": "Aluno iniciante",
+  "endereco": "Avenida jabaquara",
+  "complemento": "apartamento 702",
+  "bairro": "mirandopolis",
+  "cidade": "sao paulo",
+  "estado": "sp",
+  "cep": null
+}
+
+
+### Listar Alunos
+GET {{baseUrl}}/alunos
+
+
+### Listar Alunos com paginação
+GET {{baseUrl}}/alunos?page=0&size=10&sort=nome,asc
+
+### Buscar aluno por ID
+GET {{baseUrl}}/alunos/1
+
+###Atualizar ALuno
+PUT {{baseUrl}}/alunos/1
+Content-Type: application/json
+
+{
+  "nome": "Matheus kikuti atualizado",
+  "dataNascimento": "2004-05-16",
+  "sexo": "M",
+  "telefone": "123456789",
+  "celular": "123456789",
+  "email": "matheus@gmail.com",
+  "observacao": "Aluno iniciante",
+  "endereco": "Avenida jabaquara",
+  "complemento": "apartamento 702",
+  "bairro": "mirandopolis",
+  "cidade": "sao paulo",
+  "estado": "sp",
+  "cep": null
+}
+
+
+### Excluir Aluno
+DELETE {{baseUrl}}/alunos/1
