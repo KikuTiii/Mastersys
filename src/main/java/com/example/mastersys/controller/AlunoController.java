@@ -3,6 +3,7 @@ package com.example.mastersys.controller;
 import com.example.mastersys.dto.AlunoRequest;
 import com.example.mastersys.dto.AlunoResponse;
 import com.example.mastersys.service.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 import org.springframework.data.web.PageableDefault;
@@ -31,7 +32,7 @@ public class AlunoController {
 
     @PostMapping
     public ResponseEntity<AlunoResponse> cadastrar(
-            @RequestBody AlunoRequest request, UriComponentsBuilder uriBuilder) {
+            @Valid @RequestBody AlunoRequest request, UriComponentsBuilder uriBuilder) {
         AlunoResponse aluno = alunoService.cadastrar(request);
         URI location = uriBuilder.path("/alunos/{id}").buildAndExpand(aluno.id()).toUri();
         return ResponseEntity.created(location).body(aluno);
@@ -48,7 +49,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public AlunoResponse atualizar(@PathVariable("id") Long id, @RequestBody AlunoRequest request) {
+    public AlunoResponse atualizar(@PathVariable("id") Long id, @Valid @RequestBody AlunoRequest request) {
         return alunoService.atualizar(id, request);
     }
 

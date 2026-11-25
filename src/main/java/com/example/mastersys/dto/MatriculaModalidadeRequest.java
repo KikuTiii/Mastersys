@@ -5,13 +5,23 @@ import com.example.mastersys.domain.Matricula;
 import com.example.mastersys.domain.MatriculaModalidade;
 import com.example.mastersys.domain.Modalidade;
 import com.example.mastersys.domain.Plano;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 
 public record MatriculaModalidadeRequest(
+        @NotNull(message = "O ID da matrícula é obrigatório.")
+        @Positive(message = "O ID da matrícula deve ser maior que zero.")
         Long matriculaId,
+        @NotNull(message = "O ID da modalidade é obrigatório.")
+        @Positive(message = "O ID da modalidade deve ser maior que zero.")
         Long modalidadeId,
+        @NotNull(message = "O ID da graduação é obrigatório.")
+        @Positive(message = "O ID da graduação deve ser maior que zero.")
         Long graduacaoId,
+        @NotNull(message = "O ID do plano é obrigatório.")
+        @Positive(message = "O ID do plano deve ser maior que zero.")
         Long planoId,
         LocalDate dataInicio,
         LocalDate dataFim
