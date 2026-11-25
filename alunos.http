@@ -54,3 +54,19 @@ Content-Type: application/json
 
 ### Excluir Aluno
 DELETE {{baseUrl}}/alunos/1
+
+
+### Listar Todos
+GET {{baseUrl}}/alunos?page=0&size=10&sort=nome,asc
+
+### Listar por nome
+GET {{baseUrl}}/alunos?nome=joao&page=0&size=10&sort=nome,asc
+
+### Listar por cidade
+GET {{baseUrl}}/alunos?cidade=sao paulo&page=0&size=10&sort=nome,asc
+
+### Listar por estado
+GET {{baseUrl}}/alunos?estado=sp&page=0&size=10&sort=nome,asc
+
+### Listar por email
+GET {{baseUrl}}/alunos?email=matheus@gmail.com&page=0&size=10&sort=nome,asc

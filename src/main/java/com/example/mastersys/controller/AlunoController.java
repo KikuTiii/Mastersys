@@ -1,5 +1,6 @@
 package com.example.mastersys.controller;
 
+import com.example.mastersys.dto.AlunoFiltroRequest;
 import com.example.mastersys.dto.AlunoRequest;
 import com.example.mastersys.dto.AlunoResponse;
 import com.example.mastersys.service.AlunoService;
@@ -39,8 +40,8 @@ public class AlunoController {
     }
 
     @GetMapping
-    public PagedModel<AlunoResponse> listar(@PageableDefault(sort = "id") Pageable pageable) {
-        return new PagedModel<>(alunoService.listar(pageable));
+    public PagedModel<AlunoResponse> listar(AlunoFiltroRequest filtro, @PageableDefault(sort = "id") Pageable pageable) {
+        return new PagedModel<>(alunoService.listar(filtro, pageable));
     }
 
     @GetMapping("/{id}")
