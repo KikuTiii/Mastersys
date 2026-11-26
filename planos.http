@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:8080
+@modalidadeId = 1
+@planoId = 1
+
+### Cadastrar plano
+POST {{baseUrl}}/planos
+Content-Type: application/json
+
+{
+  "modalidadeId": {{modalidadeId}},
+  "nome": "Mensal de teste",
+  "valorMensal": 129.90,
+  "ativo": true
+}
+
+### Listar planos com paginação
+GET {{baseUrl}}/planos?page=0&size=10&sort=nome,asc
+
+### Listar planos por modalidade
+GET {{baseUrl}}/planos?modalidadeId={{modalidadeId}}&page=0&size=10
+
+### Listar planos ativos da modalidade
+GET {{baseUrl}}/planos?modalidadeId={{modalidadeId}}&ativo=true&page=0&size=10
+
+### Listar planos inativos
+GET {{baseUrl}}/planos?ativo=false&page=0&size=10
+
+### Buscar plano por ID
+GET {{baseUrl}}/planos/{{planoId}}
