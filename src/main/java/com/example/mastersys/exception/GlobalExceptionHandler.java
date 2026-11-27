@@ -35,4 +35,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
+    @ExceptionHandler(RecursoNaoEncontradoException.class)
+    public ResponseEntity<ErroResponse> tratarRecursoNaoEncontrado(
+            RecursoNaoEncontradoException ex) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        ErroResponse resposta = new ErroResponse(
+                LocalDateTime.now(),
+                status.value(),
+                "Recurso não encontrado",
+                List.of(ex.getMessage())
+        );
+        return ResponseEntity.status(status).body(resposta);
+    }
+
 }
